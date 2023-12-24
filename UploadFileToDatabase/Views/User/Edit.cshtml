@@ -1,0 +1,45 @@
+﻿@using UploadFileToDatabase.Dtos.UserDto;
+
+
+@model UserEditDto
+
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+
+
+    <div class="container">
+
+        <div asp-validation-summary="All"></div>
+        <input asp-for="Id" hidden class="form-control" />
+
+        <div class="row mb-3">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="row mb-3">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="row mb-3">
+            <label asp-for="FormFile"></label>
+            <input type="file" asp-for="FormFile" class="form-control" />
+            <span asp-validation-for="FormFile" class="text-danger"></span>
+        </div>
+
+        <button class="btn btn-warning" type="Submit">Edit</button>
+
+        <a class="container row pt-2 " asp-action="Index" asp-controller="User">Back to list</a>
+
+    </div>
+
+
+</form>
+

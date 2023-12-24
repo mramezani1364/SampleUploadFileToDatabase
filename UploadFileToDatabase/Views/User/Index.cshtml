@@ -1,0 +1,37 @@
+﻿@using UploadFileToDatabase.Dtos.UserDto;
+@model IEnumerable<UserGetAllDto>
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1 class="bg-info text-white mb-3">All User</h1>
+
+<a asp-action="Add" class="btn mb-2 btn-secondary">Create a User</a>
+
+<table class="table table-sm table-bordered">
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Update</th>
+        <th>Detail</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td> @user.Email</td>
+            <td><a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.Id">Update</a></td>
+            <td><a class="btn btn-sm btn-primary" asp-action="Detail" asp-route-id="@user.Id">Detail</a></td>
+            <td>
+                <form asp-action="Remove" asp-route-id="@user.Id" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
